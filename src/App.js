@@ -5,6 +5,8 @@ import Header from './components/Header';
 import Text from './components/Text';
 import Button from './components/Button';
 
+import { KEY, SNAKE_DIRECTION } from './util/GameControl';
+
 import './App.css';
 
 const GRID_SIZE = 35;
