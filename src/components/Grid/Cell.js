@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
-import { isSnakeCoordinates, isSnakeHead } from '../../util/Snake';
+import { isSnakeCoordinates } from '../../util/Snake';
 import { isFruit } from '../../util/Fruit';
 
 const Cell = styled.div`
@@ -9,20 +9,12 @@ const Cell = styled.div`
     height: 10px;
 
     ${({ x, y, snake, fruit, size }) => {
-        const isBorder = x === 0 || y === 0 || x === size || y === size;
+        const isBorder = x === 0 || y === 0 || x === size - 1 || y === size - 1;
         const isSnake = isSnakeCoordinates(x, y, snake);
-        const isHead = isSnakeHead(x, y, snake);
 
         if (isFruit(x, y, fruit)) {
             return css`
                 background: #b71c1c;
-            `;
-        }
-
-        if (isHead) {
-            return css`
-                border-radius: 50%;
-                background: #ecf0f1;
             `;
         }
 
@@ -34,6 +26,7 @@ const Cell = styled.div`
 
         if (isSnake) {
             return css`
+                border-radius: 50%;
                 background: #1b5e20;
             `;
         }

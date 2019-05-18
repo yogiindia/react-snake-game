@@ -17,23 +17,24 @@ const reducer = (state, action) => {
         }
 
         case 'MOVE_SNAKE': {
-            const { snake, fruit, direction } = state;
+            const { snake, fruit, direction, size } = state;
             const isSnakeEaten = isSnakeHaveEatenFruit(snake, fruit);
 
             const currentSnakeHead = getSnakeHead(snake);
 
             const newSnakeHead = MOVE[direction](
                 currentSnakeHead.x,
-                currentSnakeHead.y
+                currentSnakeHead.y,
+                size
             );
+
+            console.log(newSnakeHead.x, newSnakeHead.y);
 
             const newSnakeTail = isSnakeEaten
                 ? state.snake
                 : getSnakeWithoutEnd(snake);
 
-            const newFruit = isSnakeEaten
-                ? generateCoordinate(state.size)
-                : fruit;
+            const newFruit = isSnakeEaten ? generateCoordinate(size) : fruit;
 
             return {
                 ...state,

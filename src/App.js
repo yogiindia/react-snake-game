@@ -24,7 +24,6 @@ const initialState = {
 function App() {
     const [state, dispatch] = useReducer(GameReducer, initialState);
 
-    console.log(state);
     const changeDirection = e => {
         const direction = DIRECTION[e.keyCode];
 
@@ -57,7 +56,7 @@ function App() {
             }
         };
 
-        const interval = setInterval(snakeMovementChecker, 1000);
+        const interval = setInterval(snakeMovementChecker, 100);
 
         return () => {
             clearInterval(interval);
