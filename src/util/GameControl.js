@@ -1,11 +1,11 @@
-const KEY = {
+const DIRECTION = {
     37: 'LEFT',
     38: 'UP',
     39: 'RIGHT',
     40: 'DOWN'
 };
 
-const SNAKE_DIRECTION = {
+const MOVE = {
     LEFT: (x, y, size) => {
         let newX = x - 1;
         if (newX === 0) {
@@ -27,7 +27,7 @@ const SNAKE_DIRECTION = {
         }
         return { x: newX, y };
     },
-    BOTTOM: (x, y, size) => {
+    DOWN: (x, y, size) => {
         let newY = y + 1;
         if (newY === size) {
             newY = 0;
@@ -36,4 +36,4 @@ const SNAKE_DIRECTION = {
     }
 };
 
-export { KEY, SNAKE_DIRECTION };
+export { DIRECTION, MOVE };

@@ -1,18 +1,20 @@
-import { random } from 'lodash.random';
+import { random } from 'lodash';
 
 const atPosition = (x, y, diffx, diffy) => x === diffx && y === diffy;
 
-const generateCoordinates = size => ({
-    x: random(1, size),
-    y: random(1, size)
-});
+const generateCoordinate = size => {
+    return {
+        x: random(1, size),
+        y: random(1, size)
+    };
+};
 
 const isCoordinatesMatching = (x, y, coordinates) => {
-    const matchingCoordinates = coordinates.filter(({ snakeX, snakeY }) =>
+    const matchingCoordinates = coordinates.filter(({ x: snakeX, y: snakeY }) =>
         atPosition(x, y, snakeX, snakeY)
     );
 
     return matchingCoordinates.length;
 };
 
-export { generateCoordinates, atPosition, isCoordinatesMatching };
+export { generateCoordinate, atPosition, isCoordinatesMatching };

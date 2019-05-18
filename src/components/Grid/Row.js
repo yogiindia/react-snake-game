@@ -4,12 +4,19 @@ import range from 'lodash/range';
 
 import Cell from './Cell';
 
-const Row = ({ y, size, ...props }) => {
+const Row = ({ y, size, snake, fruit, ...props }) => {
     const GRID = range(size + 1);
     return (
         <div className={props.className}>
             {GRID.map(x => (
-                <Cell x={x} y={y} key={x} size={size} />
+                <Cell
+                    x={x}
+                    y={y}
+                    key={x}
+                    size={size}
+                    snake={snake}
+                    fruit={fruit}
+                />
             ))}
         </div>
     );

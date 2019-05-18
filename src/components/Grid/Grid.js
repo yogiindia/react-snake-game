@@ -4,13 +4,13 @@ import range from 'lodash/range';
 
 import Row from './Row';
 
-const Grid = ({ size, ...props }) => {
+const Grid = ({ size, snake, fruit, ...props }) => {
     const GRID = range(size + 1);
 
     return (
         <div className={props.className}>
             {GRID.map(y => (
-                <Row y={y} key={y} size={size} />
+                <Row y={y} key={y} size={size} snake={snake} fruit={fruit} />
             ))}
         </div>
     );
