@@ -11,7 +11,7 @@ import GameReducer from './Reducers';
 
 import './App.css';
 
-const GRID_SIZE = 35;
+const GRID_SIZE = 30;
 
 const initialState = {
     size: GRID_SIZE,
@@ -56,7 +56,7 @@ function App() {
             }
         };
 
-        const interval = setInterval(snakeMovementChecker, 100);
+        const interval = setInterval(snakeMovementChecker, 150);
 
         return () => {
             clearInterval(interval);

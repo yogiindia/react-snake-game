@@ -5,8 +5,8 @@ import { isFruit } from '../../util/Fruit';
 
 const Cell = styled.div`
     border-color: #ecf0f1;
-    width: 10px;
-    height: 10px;
+    width: 15px;
+    height: 15px;
 
     ${({ x, y, snake, fruit, size }) => {
         const isBorder = x === 0 || y === 0 || x === size - 1 || y === size - 1;
@@ -14,7 +14,7 @@ const Cell = styled.div`
 
         if (isFruit(x, y, fruit)) {
             return css`
-                background: #b71c1c;
+                background: #7f0000;
             `;
         }
 
@@ -27,7 +27,7 @@ const Cell = styled.div`
         if (isSnake) {
             return css`
                 border-radius: 50%;
-                background: #1b5e20;
+                background: #c9a100;
             `;
         }
     }}
