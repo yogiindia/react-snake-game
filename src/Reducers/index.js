@@ -3,7 +3,8 @@ import { generateCoordinate } from '../util/Coordinate';
 import {
     isSnakeHaveEatenFruit,
     getSnakeHead,
-    getSnakeWithoutEnd
+    getSnakeWithoutEnd,
+    isSnakeHit
 } from '../util/Snake';
 
 const reducer = (state, action) => {
@@ -18,29 +19,41 @@ const reducer = (state, action) => {
 
         case 'MOVE_SNAKE': {
             const { snake, fruit, direction, size } = state;
-            const isSnakeEaten = isSnakeHaveEatenFruit(snake, fruit);
 
-            const currentSnakeHead = getSnakeHead(snake);
+            if (isSnakeHit(snake)) {
+                return {
+                    ...state,
+                    isGameOver: true
+                };
+            } else {
+                const isSnakeEaten = isSnakeHaveEatenFruit(snake, fruit);
 
-            const newSnakeHead = MOVE[direction](
-                currentSnakeHead.x,
-                currentSnakeHead.y,
-                size
-            );
+                const currentSnakeHead = getSnakeHead(snake);
 
-            console.log(newSnakeHead.x, newSnakeHead.y);
+                const newSnakeHead = MOVE[direction](
+                    currentSnakeHead.x,
+                    currentSnakeHead.y,
+                    size
+                );
 
-            const newSnakeTail = isSnakeEaten
-                ? state.snake
-                : getSnakeWithoutEnd(snake);
+                const newSnakeTail = isSnakeEaten
+                    ? state.snake
+                    : getSnakeWithoutEnd(snake);
 
-            const newFruit = isSnakeEaten ? generateCoordinate(size) : fruit;
+                const newFruit = isSnakeEaten
+                    ? generateCoordinate(size)
+                    : fruit;
 
-            return {
-                ...state,
-                snake: [newSnakeHead, ...newSnakeTail],
-                fruit: newFruit
-            };
+                if (isSnakeEaten) {
+                    console.log(newFruit);
+                }
+
+                return {
+                    ...state,
+                    snake: [newSnakeHead, ...newSnakeTail],
+                    fruit: newFruit
+                };
+            }
         }
 
         case 'GAME_OVER': {

@@ -4,8 +4,8 @@ const atPosition = (x, y, diffx, diffy) => x === diffx && y === diffy;
 
 const generateCoordinate = size => {
     return {
-        x: random(1, size),
-        y: random(1, size)
+        x: random(1, size - 2),
+        y: random(1, size - 2)
     };
 };
 

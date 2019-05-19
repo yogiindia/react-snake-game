@@ -24,6 +24,8 @@ const initialState = {
 function App() {
     const [state, dispatch] = useReducer(GameReducer, initialState);
 
+    const { snake } = state;
+
     const changeDirection = e => {
         const direction = DIRECTION[e.keyCode];
 
@@ -45,23 +47,18 @@ function App() {
 
     useEffect(() => {
         const snakeMovementChecker = () => {
-            if (isSnakeHit(state.snake)) {
-                dispatch({
-                    type: 'GAME_OVER'
-                });
-            } else {
-                dispatch({
-                    type: 'MOVE_SNAKE'
-                });
-            }
+            dispatch({
+                type: 'MOVE_SNAKE'
+            });
         };
 
+        console.log('Setting Interval');
         const interval = setInterval(snakeMovementChecker, 150);
 
         return () => {
             clearInterval(interval);
         };
-    }, [state]);
+    }, [dispatch]);
 
     return (
         <div className="app">
