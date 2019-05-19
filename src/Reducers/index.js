@@ -18,7 +18,7 @@ const reducer = (state, action) => {
         }
 
         case 'MOVE_SNAKE': {
-            const { snake, fruit, direction, size } = state;
+            const { snake, fruit, direction, size, score } = state;
 
             if (isSnakeHit(snake)) {
                 return {
@@ -44,12 +44,13 @@ const reducer = (state, action) => {
                     ? generateCoordinate(size)
                     : fruit;
 
-                if (isSnakeEaten) {
-                    console.log(newFruit);
-                }
+                const newScore = isSnakeEaten
+                    ? (parseInt(score) + 1).toString().padStart(5, '0')
+                    : score;
 
                 return {
                     ...state,
+                    score: newScore,
                     snake: [newSnakeHead, ...newSnakeTail],
                     fruit: newFruit
                 };

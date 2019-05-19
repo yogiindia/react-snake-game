@@ -14,6 +14,7 @@ import './App.css';
 const GRID_SIZE = 30;
 
 const initialState = {
+    score: '00000',
     size: GRID_SIZE,
     direction: DIRECTION[39],
     isGameOver: false,
@@ -23,8 +24,6 @@ const initialState = {
 
 function App() {
     const [state, dispatch] = useReducer(GameReducer, initialState);
-
-    const { snake } = state;
 
     const changeDirection = e => {
         const direction = DIRECTION[e.keyCode];
@@ -67,7 +66,7 @@ function App() {
                 <div className="control-panel">
                     <Text>time : 00</Text>
                     <Button>Play</Button>
-                    <Text>score: 00</Text>
+                    <Text>score: {state.score}</Text>
                 </div>
                 <Grid
                     size={GRID_SIZE}
