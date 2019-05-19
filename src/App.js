@@ -5,8 +5,10 @@ import Header from './components/Header';
 import Text from './components/Text';
 import Button from './components/Button';
 import { DIRECTION } from './util/GameControl';
-import { generateSnake, isSnakeHit } from './util/Snake';
+import { generateSnake } from './util/Snake';
 import { generateCoordinate } from './util/Coordinate';
+import Timer from './components/Timer';
+
 import GameReducer from './Reducers';
 
 import './App.css';
@@ -14,7 +16,7 @@ import './App.css';
 const GRID_SIZE = 30;
 
 const initialState = {
-    score: '00000',
+    score: '000',
     size: GRID_SIZE,
     direction: DIRECTION[39],
     isGameOver: false,
@@ -64,9 +66,9 @@ function App() {
             <Header>Snake Game</Header>
             <div className="container">
                 <div className="control-panel">
-                    <Text>time : 00</Text>
+                    <Timer>{timer => <Text>time :- {timer}</Text>}</Timer>
                     <Button>Play</Button>
-                    <Text>score: {state.score}</Text>
+                    <Text>score :- {state.score}</Text>
                 </div>
                 <Grid
                     size={GRID_SIZE}
