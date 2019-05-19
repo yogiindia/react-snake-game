@@ -20,6 +20,7 @@ const initialState = {
     size: GRID_SIZE,
     direction: DIRECTION[39],
     isGameOver: false,
+    play: false,
     snake: generateSnake(GRID_SIZE),
     fruit: generateCoordinate(GRID_SIZE)
 };
@@ -61,13 +62,21 @@ function App() {
         };
     }, [dispatch]);
 
+    const togglePlay = e => {
+        dispatch({
+            type: 'TOGGLE_PLAY'
+        });
+    };
+
     return (
         <div className="app">
             <Header>Snake Game</Header>
             <div className="container">
                 <div className="control-panel">
-                    <Timer>{timer => <Text>time :- {timer}</Text>}</Timer>
-                    <Button>Play</Button>
+                    <Timer on={state.play}>
+                        {timer => <Text>time :- {timer}</Text>}
+                    </Timer>
+                    <Button onClick={togglePlay}>Play</Button>
                     <Text>score :- {state.score}</Text>
                 </div>
                 <Grid

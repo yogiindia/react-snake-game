@@ -18,11 +18,14 @@ const reducer = (state, action) => {
         }
 
         case 'MOVE_SNAKE': {
-            const { snake, fruit, direction, size, score } = state;
+            const { snake, fruit, direction, size, score, play } = state;
 
-            if (isSnakeHit(snake)) {
+            if (!play) {
+                return { ...state };
+            } else if (isSnakeHit(snake)) {
                 return {
                     ...state,
+                    play: false,
                     isGameOver: true
                 };
             } else {
@@ -57,10 +60,14 @@ const reducer = (state, action) => {
             }
         }
 
-        case 'GAME_OVER': {
+        case 'TOGGLE_PLAY': {
+            console.log('Game Toggle');
+
+            const { isGameOver, play } = state;
+
             return {
                 ...state,
-                isGameOver: true
+                play: isGameOver ? play : !play
             };
         }
 
