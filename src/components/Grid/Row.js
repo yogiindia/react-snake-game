@@ -4,7 +4,7 @@ import range from 'lodash/range';
 
 import Cell from './Cell';
 
-const Row = ({ y, size, snake, fruit, ...props }) => {
+const Row = ({ y, size, snake, fruit, isGameOver, ...props }) => {
     const GRID = range(size);
     return (
         <div className={props.className}>
@@ -16,6 +16,7 @@ const Row = ({ y, size, snake, fruit, ...props }) => {
                     size={size}
                     snake={snake}
                     fruit={fruit}
+                    isGameOver={isGameOver}
                 />
             ))}
         </div>
