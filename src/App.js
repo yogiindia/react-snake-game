@@ -8,7 +8,6 @@ import { DIRECTION } from './util/GameControl';
 import { generateSnake } from './util/Snake';
 import { generateCoordinate } from './util/Coordinate';
 import Timer from './components/Timer';
-
 import GameReducer from './Reducers';
 
 import './App.css';
@@ -68,22 +67,24 @@ function App() {
         });
     };
 
+    const { play, isGameOver, score, snake, fruit } = state;
+
     return (
         <div className="app">
             <Header>Snake Game</Header>
             <div className="container">
                 <div className="control-panel">
-                    <Timer on={state.play}>
+                    <Timer pause={!play} reset={isGameOver}>
                         {timer => <Text>time :- {timer}</Text>}
                     </Timer>
                     <Button onClick={togglePlay}>Play</Button>
-                    <Text>score :- {state.score}</Text>
+                    <Text>score :- {score}</Text>
                 </div>
                 <Grid
                     size={GRID_SIZE}
-                    snake={state.snake}
-                    fruit={state.fruit}
-                    isGameOver={state.isGameOver}
+                    snake={snake}
+                    fruit={fruit}
+                    isGameOver={isGameOver}
                 />
             </div>
         </div>

@@ -1,29 +1,44 @@
-import React, { useState, useEffect } from 'react';
+import React, { useRef, useEffect, useState } from 'react';
 
-function Timer(props) {
-    const [counter, setCounter] = useState('0:00');
+function Timer({ pause = true, reset = false, ...props }) {
+    const [ms, setMs] = useState(0);
+
+    const intervalRef = useRef();
 
     useEffect(() => {
-        const start = new Date().getTime();
+        if (pause) {
+            if (intervalRef.current) {
+                clearInterval(intervalRef.current);
+            }
+        } else {
+            const startTime = Date.now() - ms;
+            const id = setInterval(() => {
+                setMs(Date.now() - startTime);
+            }, 1000);
+            intervalRef.current = id;
+        }
 
-        const interval = () => {
-            const end = new Date().getTime();
-            const duration = end - start;
-            const seconds = Math.floor((duration / 1000) % 60);
-            const minutes = Math.floor((duration / (1000 * 60)) % 60);
-            // const hours = Math.floor((duration / (1000 * 60 * 60)) % 24);
+        if (reset) {
+            setMs(0);
+        }
 
-            setCounter(() => {
-                return ` ${minutes} : ${seconds.toString().padStart(2, '0')}`;
-            });
+        return () => {
+            clearInterval(intervalRef.current);
         };
+    }, [ms, pause, reset]);
 
-        setInterval(interval, 1000);
+    const convertMS = ms => {
+        if (ms) {
+            const seconds = Math.floor((ms % (1000 * 60)) / 1000);
+            const minutes = Math.floor((ms % (1000 * 60 * 60)) / (1000 * 60));
 
-        return () => clearInterval(interval);
-    }, []);
+            return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        }
 
-    return <>{props.children(counter)}</>;
+        return '0:00';
+    };
+
+    return <div>{props.children(convertMS(ms))}</div>;
 }
 
 export default Timer;
