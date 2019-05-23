@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/yogeshkumar87/react-snake-game/static/css/main.eb8ff75e.chunk.css",
-    "main.js": "/yogeshkumar87/react-snake-game/static/js/main.f100f29e.chunk.js",
-    "main.js.map": "/yogeshkumar87/react-snake-game/static/js/main.f100f29e.chunk.js.map",
-    "runtime~main.js": "/yogeshkumar87/react-snake-game/static/js/runtime~main.c8ab43ef.js",
-    "runtime~main.js.map": "/yogeshkumar87/react-snake-game/static/js/runtime~main.c8ab43ef.js.map",
-    "static/js/2.2dc9da19.chunk.js": "/yogeshkumar87/react-snake-game/static/js/2.2dc9da19.chunk.js",
-    "static/js/2.2dc9da19.chunk.js.map": "/yogeshkumar87/react-snake-game/static/js/2.2dc9da19.chunk.js.map",
-    "index.html": "/yogeshkumar87/react-snake-game/index.html",
-    "precache-manifest.b3508aad19b31927589cbbb3923ae11e.js": "/yogeshkumar87/react-snake-game/precache-manifest.b3508aad19b31927589cbbb3923ae11e.js",
-    "service-worker.js": "/yogeshkumar87/react-snake-game/service-worker.js",
-    "static/css/main.eb8ff75e.chunk.css.map": "/yogeshkumar87/react-snake-game/static/css/main.eb8ff75e.chunk.css.map"
+    "main.css": "/react-snake-game/static/css/main.eb8ff75e.chunk.css",
+    "main.js": "/react-snake-game/static/js/main.f3279beb.chunk.js",
+    "main.js.map": "/react-snake-game/static/js/main.f3279beb.chunk.js.map",
+    "runtime~main.js": "/react-snake-game/static/js/runtime~main.87448e3a.js",
+    "runtime~main.js.map": "/react-snake-game/static/js/runtime~main.87448e3a.js.map",
+    "static/js/2.e1358a3d.chunk.js": "/react-snake-game/static/js/2.e1358a3d.chunk.js",
+    "static/js/2.e1358a3d.chunk.js.map": "/react-snake-game/static/js/2.e1358a3d.chunk.js.map",
+    "index.html": "/react-snake-game/index.html",
+    "precache-manifest.ec4cbf34e2f595dde721d083461b1903.js": "/react-snake-game/precache-manifest.ec4cbf34e2f595dde721d083461b1903.js",
+    "service-worker.js": "/react-snake-game/service-worker.js",
+    "static/css/main.eb8ff75e.chunk.css.map": "/react-snake-game/static/css/main.eb8ff75e.chunk.css.map"
   }
 }
