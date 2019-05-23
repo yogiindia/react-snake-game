@@ -78,19 +78,29 @@ function App() {
         <div className="app">
             <Header>Snake Game</Header>
             <div className="container">
-                <ControlPanel
-                    play={play}
-                    isGameOver={isGameOver}
-                    score={score}
-                    togglePlay={togglePlay}
-                />
+                {play && (
+                    <ControlPanel
+                        play={play}
+                        isGameOver={isGameOver}
+                        score={score}
+                        togglePlay={togglePlay}
+                    />
+                )}
 
                 <div className="game-grid">
-                    <Overlay>
-                        <Score>{score}</Score>
-                        <FancyText>game over</FancyText>
-                        <FancyButton>Play</FancyButton>
-                    </Overlay>
+                    {!play && (
+                        <Overlay>
+                            {isGameOver && (
+                                <>
+                                    <Score>{score}</Score>
+                                    <FancyText>game over</FancyText>
+                                </>
+                            )}
+
+                            <FancyButton onClick={togglePlay}>Play</FancyButton>
+                        </Overlay>
+                    )}
+
                     <Grid
                         size={GRID_SIZE}
                         snake={snake}

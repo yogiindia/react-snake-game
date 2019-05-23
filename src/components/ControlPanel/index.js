@@ -21,7 +21,7 @@ function ControlPanel(props) {
             <Timer pause={!play} reset={isGameOver}>
                 {timer => <Text>time :- {timer}</Text>}
             </Timer>
-            <Button onClick={togglePlay}>Play</Button>
+            <Button onClick={togglePlay}>Pause</Button>
             <Text>score :- {score}</Text>
         </Container>
     );

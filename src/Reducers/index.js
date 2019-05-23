@@ -4,7 +4,8 @@ import {
     isSnakeHaveEatenFruit,
     getSnakeHead,
     getSnakeWithoutEnd,
-    isSnakeHit
+    isSnakeHit,
+    generateSnake
 } from '../util/Snake';
 
 const reducer = (state, action) => {
@@ -63,7 +64,18 @@ const reducer = (state, action) => {
         case 'TOGGLE_PLAY': {
             console.log('Game Toggle');
 
-            const { isGameOver, play } = state;
+            const { isGameOver, play, size } = state;
+
+            if (isGameOver) {
+                return {
+                    ...state,
+                    isGameOver: false,
+                    play: !play,
+                    score: '000',
+                    snake: generateSnake(size),
+                    fruit: generateCoordinate(size)
+                };
+            }
 
             return {
                 ...state,
