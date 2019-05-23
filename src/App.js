@@ -78,14 +78,12 @@ function App() {
         <div className="app">
             <Header>Snake Game</Header>
             <div className="container">
-                {play && (
-                    <ControlPanel
-                        play={play}
-                        isGameOver={isGameOver}
-                        score={score}
-                        togglePlay={togglePlay}
-                    />
-                )}
+                <ControlPanel
+                    play={play}
+                    isGameOver={isGameOver}
+                    score={score}
+                    togglePlay={togglePlay}
+                />
 
                 <div className="game-grid">
                     {!play && (

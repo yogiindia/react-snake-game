@@ -11,13 +11,20 @@ const Container = styled.div`
     flex-direction: row;
     justify-content: space-around;
     padding: 5px;
+    visibility: ${props => {
+        if (props.hide) {
+            return 'hidden';
+        }
+
+        return 'visible';
+    }};
 `;
 
 function ControlPanel(props) {
     const { play, isGameOver, score, togglePlay } = props;
 
     return (
-        <Container>
+        <Container hide={isGameOver || !play}>
             <Timer pause={!play} reset={isGameOver}>
                 {timer => <Text>time :- {timer}</Text>}
             </Timer>
