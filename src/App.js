@@ -2,12 +2,17 @@ import React, { useReducer, useEffect } from 'react';
 
 import Grid from './components/Grid';
 import Header from './components/Header';
-import Text from './components/Text';
-import Button from './components/Button';
+
+import Overlay from './components/Overlay';
+import FancyButton from './components/FancyButton';
+import FancyText from './components/FancyText';
+import Score from './components/Score';
+import ControlPanel from './components/ControlPanel';
+
 import { DIRECTION } from './util/GameControl';
 import { generateSnake } from './util/Snake';
 import { generateCoordinate } from './util/Coordinate';
-import Timer from './components/Timer';
+
 import GameReducer from './Reducers';
 
 import './App.css';
@@ -73,19 +78,26 @@ function App() {
         <div className="app">
             <Header>Snake Game</Header>
             <div className="container">
-                <div className="control-panel">
-                    <Timer pause={!play} reset={isGameOver}>
-                        {timer => <Text>time :- {timer}</Text>}
-                    </Timer>
-                    <Button onClick={togglePlay}>Play</Button>
-                    <Text>score :- {score}</Text>
-                </div>
-                <Grid
-                    size={GRID_SIZE}
-                    snake={snake}
-                    fruit={fruit}
+                <ControlPanel
+                    play={play}
                     isGameOver={isGameOver}
+                    score={score}
+                    togglePlay={togglePlay}
                 />
+
+                <div className="game-grid">
+                    <Overlay>
+                        <Score>{score}</Score>
+                        <FancyText>game over</FancyText>
+                        <FancyButton>Play</FancyButton>
+                    </Overlay>
+                    <Grid
+                        size={GRID_SIZE}
+                        snake={snake}
+                        fruit={fruit}
+                        isGameOver={isGameOver}
+                    />
+                </div>
             </div>
         </div>
     );
